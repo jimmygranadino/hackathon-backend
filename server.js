@@ -1,4 +1,4 @@
-let quotesList = [];
+let theseQuotes = [{id: 0, quote: "Cool Beans", author: "Nick Quandt", sentiment: "positive"}, {id: 1, quote: "Arf!", author: "the neighbor's dog", sentiment: "positive"}];
 let nextId = 0;
 
 require("dotenv").config();
@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/quotes', (req,res) => {
-    res.send("In quotes '/' route");
+    res.json({data: theseQuotes});
 })
 
 app.listen(process.env.PORT || 3001, () => console.log(`Server is running on ${process.env.PORT} or 3001`));
