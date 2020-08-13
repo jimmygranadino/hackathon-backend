@@ -62,11 +62,12 @@ app.get('/', (req, res) => {
     res.send("Landing page");
 })
 
-app.get('/quotes', (req,res) => { 
+app.post('/quotes', (req,res) => { 
     // receives a request with a 'sentiment' body attribute
     // 'sentiment' can be 'positive', 'negative', or empty
     // response delivers a random quote from a filtered or unfiltered list, as appropriate 
     let filteredQuotes = []; 
+    console.log("Server received sentiment: " + req.body.sentiment)
     if (req.body.sentiment){
         quotes.forEach(quote => {
             if (req.body.sentiment === quote.sentiment){
