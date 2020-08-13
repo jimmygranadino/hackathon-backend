@@ -44,7 +44,7 @@ let quotes = [
 {id: 0, quote: "Don’t wait for opportunity. Create it.", author: "Anonymous", sentiment: "positive"},
 {id: 0, quote: "The first and greatest victory is to conquer self.", author: "Plato", sentiment: "positive"}
 ];
-
+const cors = require('cors')
 require("dotenv").config();
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -53,6 +53,10 @@ const app = express()
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json())
+app.use(cors({
+    "origin": process.env.CLIENT_URL
+}))
+
 
 app.get('/', (req, res) => {
     res.send("Landing page");
